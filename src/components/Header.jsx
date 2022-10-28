@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <>
         <header>
-            <h1 className="font-bold tracking-tight text-gray-1200">Administracion Productos <span>Desarrollo WEB</span></h1>
+            <h1 className="font-bold tracking-tight text-gray-1200">E-Commerce Tienda Virtual</h1>
         </header>
     </>
   )
