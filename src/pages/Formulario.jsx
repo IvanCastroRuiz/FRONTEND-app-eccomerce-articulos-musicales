@@ -28,8 +28,7 @@ const Formulario = ({contactos,setContactos}) => {
         setContactos(contactos);
     }
   };  
-
-
+  
   const handleSubmit = (e) => {
         e.preventDefault();
         //console.log(e.target.id);
@@ -57,87 +56,96 @@ const Formulario = ({contactos,setContactos}) => {
   };
 
   const { msg } = alerta;
-  console.log(contactos);
-
+  
   return (
-    <form 
-        id="form"
-        className="formulario"
-        onSubmit={handleSubmit}
-    >
-        <fieldset>
-            <legend>Contactenos llenado todos los campos</legend>
-            <div className="contenedor-campos">
-                <div className="campos">
-                    <label>Nombre</label>
+    <>
+        <div>
+            <h1 className="text-cyan-600 font-black text-6xl">Contactenos llenado todos los campos {" "}<span className="text-black">----</span></h1>
+        </div>
+        <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
+            <form 
+                onSubmit={handleSubmit}
+            >
+                
+                <div className="my-5">
+                    <label
+                        className="uppercase text-gray-600 block text-xl font-bold"
+                    >
+                        Nombre
+                    </label>
                     <input 
                         id="nombre" 
                         name="nombre" 
                         type="text" 
                         placeholder="Tu nombre" 
-                        className="input-text" 
+                        className="border w-full p-3 mt-3 bg-gray-50 rounded-xl" 
                         value={nombre}
                         onChange={ e => setNombre(e.target.value)}    
                     />
                 </div>
-                <div className="campos">
-                    <label>Telefono</label>
+                <div className="my-5">
+                    <label
+                        className="uppercase text-gray-600 block text-xl font-bold"
+                    >
+                        Telefono
+                    </label>
                     <input 
                         id="telefono" 
                         type="tel" 
                         placeholder="Tu telefono" 
-                        className="input-text" 
+                        className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"  
                         value={telefono}
                         onChange={ e => setTelefono(e.target.value)}  
                     />
                 </div>
-                <div className="campos">
-                    <label>Correo</label>
+                <div className="my-5">
+                    <label
+                        className="uppercase text-gray-600 block text-xl font-bold"
+                    >
+                        Correo
+                    </label>
                     <input 
                         id="correo" 
                         type="email" 
                         placeholder="Tu Email" 
-                        className="input-text" 
+                        className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"  
                         value={correo}
                         onChange={ e => setCorreo(e.target.value)} 
                     />
                 </div>
-                <div className="campos">
-                    <label>Mensaje</label>
+                <div className="my-5">
+                    <label
+                        className="uppercase text-gray-600 block text-xl font-bold"
+                    >
+                        Mensaje
+                    </label>
                     <textarea 
                         id="mensaje" 
                         placeholder="Tu mensaje" 
                         name="mensaje" 
-                        className="input-text" 
+                        className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"  
                         value={mensaje}
                         onChange={ e => setMensaje(e.target.value)} 
                     />
                 </div>
-            </div>  
-            <div id="contenedor-spinner">
-            </div> 
+                {/* Mostar Alerta */}
 
-            {/* Mostar Alerta */}
-
-            {
-                msg && 
-                    <Alerta
-                        alerta={alerta}
-                        setAlerta={setAlerta}
-                    />
-            }
-
-            <div className="alinear-derecha flex">
+                {
+                    msg && 
+                        <Alerta
+                            alerta={alerta}
+                            setAlerta={setAlerta}
+                        />
+                }
                 <input 
-                    className="boton w-100" 
+                    className="bg-cyan-600 w-full py-3 px-10 rounded-xl text-white uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-800 md:w-auto"              
                     type="submit" 
                     defaultValue="Enviar" 
                 />
-            </div>
-        
-        </fieldset>
-        
-    </form>
+            </form>
+        </div>
+    </>
+    
   )
 }
 

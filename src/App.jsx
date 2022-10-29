@@ -13,11 +13,19 @@ import LayoutPublic from './Layout/LayoutPublic';
 import Home from './pages/Home';
 import Vite from './pages/Vite';
 import Main from './pages/Main';
+
+// Login
+import Registrar from './pages/Registrar';
+import OlvidePassword from './pages/OlvidePassword';
+import ConfirmarCuenta from './pages/ConfirmarCuenta';
+import NuevoPassword from './pages/NuevoPassword';
+// Fin Login
+
 import ListaProductos from './pages/ListaProductos';
 import DetalleArticulo from './pages/DetalleArticulo';
 
 // Styles
-import './assets/css/App.css';
+//import './assets/css/App.css';
 // import './assets/css/index.css';
 import './assets/css/normalize.css';
 import './assets/css/styles.css';
@@ -44,6 +52,11 @@ function App() {
                                         estado={estado}
                                         setEstado={setEstado}
                                     />}/>
+          <Route path="registrar" element={<Registrar />} />
+          <Route path="olvide-password" element={<OlvidePassword />} />
+          <Route path="olvide-password/:token" element={<NuevoPassword />} />
+          <Route path="confirmar/:id" element={<ConfirmarCuenta />} />
+                                    
           <Route path="contacto" element={<Main/>}/>
           <Route path="lista-articulo" element={<ListaProductos/>}/>
           <Route path="detalle-articulo/:id" element={<DetalleArticulo/>}/>
