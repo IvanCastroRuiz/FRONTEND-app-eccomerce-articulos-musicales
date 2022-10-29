@@ -16,7 +16,7 @@ const Articulo = ({producto}) => {
 
        <div className="mt-4 flex justify-between">
             <div>
-                <h3 className="text-sm text-gray-900">
+                <h3 className="text-xl text-gray-900">
                 <Link 
                     to={`/detalle-articulo/${_id}`}
                 >
@@ -26,7 +26,7 @@ const Articulo = ({producto}) => {
                 </h3>
                 {/* <p className="mt-1 text-sm text-gray-500">{product.color}</p> */}
             </div>
-            <p className="text-sm text-gray-900 font-bold">$ {precio}</p>
+            <p className="text-xl text-gray-900 font-bold">${precio}</p>
         </div>
     </div>
   )

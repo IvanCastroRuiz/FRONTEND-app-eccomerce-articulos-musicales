@@ -11,7 +11,12 @@ const Vite = ({count,setCount,estado,setEstado}) => {
   
 
   return (
-    <div className="App">
+    <>
+    <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
+      <h1 className="text-cyan-600 font-black text-6xl">STACK MERN {" "}<span className="text-black"><br/> MongoDB <br/> ExpressJS <br/> ReactJS <br/> NodeJS </span></h1>
+      <h1 className="text-cyan-600 font-black text-6xl">Administrador de Contenido {" "}<span className="text-black"><br/> Strapi <br/> Cloudinary <br/>Tailwind css</span></h1>
+    </div>
+    <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
 
         <button
           onClick={handleSubmit}
@@ -46,6 +51,7 @@ const Vite = ({count,setCount,estado,setEstado}) => {
           Click on the Vite and React logos to learn more
         </p>
     </div>
+    </>
   )
 }
 

@@ -10,14 +10,10 @@ const Main = () => {
 
 
   return (
-    <main>   
-        <section id="section-form">   
           <Formulario
             contactos={contactos}
             setContactos={setContactos}
           />
-        </section>
-    </main>
   )
 }
 

@@ -50,7 +50,10 @@ const CambiarPassword = () => {
             <div className="flex justify-center">
                 <div className="w-full md:w-1/2 bg-white shadow rounded-lg p-5">
 
-                    {msg && <Alerta alerta={alerta} />}
+                    {msg && <Alerta 
+                                alerta={alerta} 
+                                setAlerta={setAlerta}
+                            />}
 
                     <form
                         onSubmit={handleSubmit}

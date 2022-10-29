@@ -32,19 +32,29 @@ const DetalleArticulo = () => {
         {
             _id
                 ?
-                <div>
+                <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
                     <h1 className="font-bold tracking-tight text-gray-900">{nombre}</h1>
                     <div className="mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                        <div className=" bg-gray-200 min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md group-hover:opacity-75 lg:aspect-none lg:h-80">
+                        <div className="border-2 min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md group-hover:opacity-75 lg:aspect-none lg:h-80">
                                 <img
                                     src={imagen.url}
                                     alt={nombre}
                                     className="object-containt h-100 w-220 m-auto"
                                 />
                         </div>
-                        <p className="text-6xl text-gray-900">$ {precio}</p>
-                        <p className="text-xxl text-justify text-gray-900"> {descripcion}</p>
+                        <p className="mt-4 text-6xl text-center text-gray-900">$ {precio}</p>
+                        <p className="mt-4 text-xxl text-justify text-gray-900"> {descripcion}</p>
                     </div>
+
+                    <div className="p-6 align-bottom">
+                        <Link
+                            className="btn bg-cyan-600 text-center text-3xl text-slate-200 font-bold"
+                            to="/lista-articulo"
+                        >
+                            Regresa a listado de articulos
+                        </Link>
+                    </div>
+
                 </div>       
                 :
                     <div>
@@ -54,14 +64,10 @@ const DetalleArticulo = () => {
                     </div>
         }
 
-        <div className="p-6">
-            <Link
-                className="btn bg-cyan-600 text-center text-3xl text-slate-200 font-bold"
-                to="/lista-articulo"
-            >
-                Regresa a listado de articulos
-            </Link>
+        <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
+            <h1 className="text-cyan-600 font-black text-6xl">En construccion {" "}<span className="text-black">Carro de Compras Articulos</span></h1>
         </div>
+        
     </>
   )
 }

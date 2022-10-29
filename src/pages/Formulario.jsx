@@ -59,8 +59,8 @@ const Formulario = ({contactos,setContactos}) => {
   
   return (
     <>
-        <div>
-            <h1 className="text-cyan-600 font-black text-6xl">Contactenos llenado todos los campos {" "}<span className="text-black">----</span></h1>
+        <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
+            <h1 className="text-cyan-600 font-black text-6xl">Contactenos llenando todos los campos {" "}</h1>
         </div>
         <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
             <form 

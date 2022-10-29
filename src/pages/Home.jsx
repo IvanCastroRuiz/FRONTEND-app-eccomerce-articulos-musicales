@@ -13,7 +13,30 @@ const Home = () => {
 
   const handleSudmit = e =>{
     e.preventDefault();
-    console.log("Probando");
+    
+    if([email, password].includes('')){
+      setAlerta({msg: "Todos los Campos son Obligatorios", error: true});
+      return;
+    };
+
+    // Auntenticar al usuario
+
+    // try {
+    //   const { data } = await clienteAxios.post('/usuarios/login', {
+    //     email, 
+    //     password
+    //   });
+    //   localStorage.setItem('token', data.token);
+    //   //console.log(data);
+    //   setAuth(data);
+    //   navigate('/admin');
+    // } catch (error) {
+    //   setAlerta({
+    //     msg: error.response.data.msg,
+    //     error: true
+    //   });
+    // }
+
   }
 
   const { msg } = alerta;
@@ -22,12 +45,13 @@ const Home = () => {
 
     <>
           <div>
-            <h1 className="text-cyan-600 font-black text-6xl">Inicia Sesion y Administra tus {" "}<span className="text-black">Articulos</span></h1>
+            <h1 className="text-cyan-600 font-black text-6xl">Inicia Sesion y Disfruta de Nuestros {" "}<span className="text-black">Articulos</span></h1>
           </div>
           <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
 
             { msg &&  <Alerta 
                         alerta={alerta}
+                        setAlerta={setAlerta}
                       />
             }             
 
@@ -79,7 +103,7 @@ const Home = () => {
             </nav>
 
           </div>
-        </>
+    </>
   )
 }
 

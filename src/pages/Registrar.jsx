@@ -65,6 +65,7 @@ const Registrar = () => {
 
             { msg &&  <Alerta 
                         alerta={alerta}
+                        setAlerta={setAlerta}
                       />
             }           
 

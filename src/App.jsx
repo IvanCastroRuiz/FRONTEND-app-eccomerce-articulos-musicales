@@ -46,17 +46,18 @@ function App() {
                                         reactLogo={reactLogo}  
                                       />}>
           <Route path="/" element={<Home/>}/>
+          <Route path="registrar" element={<Registrar />} />
+          <Route path="olvide-password" element={<OlvidePassword />} />
+          <Route path="olvide-password/:token" element={<NuevoPassword />} />
+          <Route path="confirmar/:id" element={<ConfirmarCuenta />} />
+          
           <Route path="vite" element={<Vite
                                         count={count}
                                         setCount={setCount}
                                         estado={estado}
                                         setEstado={setEstado}
-                                    />}/>
-          <Route path="registrar" element={<Registrar />} />
-          <Route path="olvide-password" element={<OlvidePassword />} />
-          <Route path="olvide-password/:token" element={<NuevoPassword />} />
-          <Route path="confirmar/:id" element={<ConfirmarCuenta />} />
-                                    
+                                    />}/>                                      
+          
           <Route path="contacto" element={<Main/>}/>
           <Route path="lista-articulo" element={<ListaProductos/>}/>
           <Route path="detalle-articulo/:id" element={<DetalleArticulo/>}/>

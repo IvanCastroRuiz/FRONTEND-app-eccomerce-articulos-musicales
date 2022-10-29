@@ -48,6 +48,7 @@ const ConfirmarCuenta = () => {
         { !cargando && 
               <Alerta
                 alerta={alerta}
+                setAlerta={setAlerta}
               />
         }
 
