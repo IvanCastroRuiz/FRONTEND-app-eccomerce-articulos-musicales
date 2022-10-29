@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-//import clienteAxios from '../config/axios';
+import clienteAxios from '../config/axios';
 import Alerta from '../components/Alerta';
+//import axios from 'axios';
 
 const ConfirmarCuenta = () => {
 
@@ -11,12 +12,13 @@ const ConfirmarCuenta = () => {
  const [ alerta, setAlerta ] = useState({});
 
   const params = useParams();
-  const { id } = params;
+  console.log(params);
+  const { token } = params;
 
-  useEffect(() => {
+  useEffect(() =>{
     const confirmarCuenta = async () =>{
       try {
-        const url = `/veterinarios/confirmar/${id}`;
+        const url = `/usuarios/confirmar/${token}`;
         const { data } = await clienteAxios(url);
         setCuentaConfirmada(true);
         
@@ -36,13 +38,12 @@ const ConfirmarCuenta = () => {
     };
 
     confirmarCuenta();
-
   }, []);
 
   return (
     <>
       <div>
-        <h1 className="text-indigo-600 font-black text-6xl">Confirma tu cuenta y Comienza a Administrar {" "}<span className="text-black">tus Pacientes</span></h1>
+        <h1 className="text-cyan-600 font-black text-6xl">Confirma tu cuenta y Comienza a Disfrutar {" "}<span className="text-black">De Nuestros Articulos</span></h1>
       </div>
       <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
         { !cargando && 

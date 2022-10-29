@@ -1,7 +1,8 @@
 import {  useState } from 'react'
 import { Link } from 'react-router-dom';
-//import clienteAxios from '../config/axios';
+import clienteAxios from '../config/axios';
 import Alerta from '../components/Alerta';
+//import axios from 'axios';
 
 const Registrar = () => {
 
@@ -9,11 +10,14 @@ const Registrar = () => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ repetirPassword, setRepetirPassword ] = useState('');
+  const [ telefono, setTelefono ] = useState('');
+  const [ direccion, setDireccion ] = useState('');
+  const [ web, setWeb ] = useState('');
   
   const [ alerta, setAlerta ] = useState({});
 
 
-  const handleSudmit = e =>{
+  const handleSudmit = async (e) =>{
     e.preventDefault();
 
     if([nombre, email, password, repetirPassword].includes('')){
@@ -35,23 +39,28 @@ const Registrar = () => {
 
       // Creando el usuario en la API
       
-    // try {
-    //   await clienteAxios.post('/veterinarios', {
-    //     nombre,
-    //     email,
-    //     password
-    //   });
-    //   setAlerta({
-    //     msg: "Creado correctamente, revisa tu email", 
-    //     error: false
-    //   });
+      try {
+        
+        const respuesta = await clienteAxios.post('/usuarios ', { nombre, email, password, telefono, direccion, web } );
+        setAlerta({
+            msg: "Creado correctamente, revisa tu email", 
+            error: false
+        });
 
-    // } catch (error) {
-    //   setAlerta({
-    //     msg: error.response.data.msg,
-    //     error: true
-    //   });
-    // }
+        setNombre("");
+        setEmail("");
+        setPassword("");
+        setRepetirPassword("");
+        setTelefono("");
+        setDireccion("");
+        setWeb("");
+
+    } catch (error) {
+        setAlerta({
+            msg: error.response.data.msg,
+            error: true
+        });
+    }
   };
 
   const { msg } = alerta;
@@ -129,7 +138,52 @@ const Registrar = () => {
                   placeholder="Repite tu Password"
                   className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"
                   value={repetirPassword}
-                    onChange={ e => setRepetirPassword(e.target.value) }
+                  onChange={ e => setRepetirPassword(e.target.value) }
+                />
+              </div>
+
+              <div className="my-5">
+                <label
+                  className="uppercase text-gray-600 block text-xl font-bold"
+                >
+                  Teléfono
+                </label>
+                <input 
+                  type="tel"
+                  placeholder="Ingrese su teléfono (por ejemplo, 3003000000)"
+                  className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"
+                  value={telefono}
+                  onChange={ e => setTelefono(e.target.value) }
+                />
+              </div>
+
+              <div className="my-5">
+                <label
+                  className="uppercase text-gray-600 block text-xl font-bold"
+                >
+                  Dirección
+                </label>
+                <input 
+                  type="text"
+                  placeholder="Ingrese su dirección"
+                  className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"
+                  value={direccion}
+                  onChange={ e => setDireccion(e.target.value) }
+                />
+              </div>
+
+              <div className="my-5">
+                <label
+                  className="uppercase text-gray-600 block text-xl font-bold"
+                >
+                  Dirección Web
+                </label>
+                <input 
+                  type="text"
+                  placeholder="Ingrese su dirección Web"
+                  className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"
+                  value={web}
+                  onChange={ e => setWeb(e.target.value) }
                 />
               </div>
 
