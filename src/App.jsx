@@ -6,6 +6,9 @@ import {
 
 import { useState } from 'react';
 
+// Context
+import { AuthProvider } from './context/AuthProvider';
+
 // components Layout
 import LayoutPublic from './Layout/LayoutPublic';
 
@@ -40,31 +43,36 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* Rutas Publicas */}
-      <Routes>
-        <Route exact path="/" element={<LayoutPublic
-                                        reactLogo={reactLogo}  
-                                      />}>
-          <Route path="/" element={<Home/>}/>
-          <Route path="registrar" element={<Registrar/>} />
-          <Route path="olvide-password" element={<OlvidePassword/>} />
-          <Route path="olvide-password/:token" element={<NuevoPassword/>} />
-          <Route path="confirmar/:token" element={<ConfirmarCuenta/>} />
-          
-          <Route path="vite" element={<Vite
-                                        count={count}
-                                        setCount={setCount}
-                                        estado={estado}
-                                        setEstado={setEstado}
-                                    />}/>                                      
-          
-          <Route path="contacto" element={<Main/>}/>
-          <Route path="lista-articulo" element={<ListaProductos/>}/>
-          <Route path="detalle-articulo/:id" element={<DetalleArticulo/>}/>
-        </Route>
-      </Routes>  
-      {/* Rutas Protegidas */}
+      <AuthProvider>
+        {/* Rutas Publicas */}
+        <Routes>
+          <Route exact path="/" element={<LayoutPublic
+                                          reactLogo={reactLogo}  
+                                        />}>
+            <Route path="/" element={<Home/>}/>
+            <Route path="registrar" element={<Registrar/>} />
+            <Route path="olvide-password" element={<OlvidePassword/>} />
+            <Route path="olvide-password/:token" element={<NuevoPassword/>} />
+            <Route path="confirmar/:token" element={<ConfirmarCuenta/>} />
+            
+            <Route path="vite" element={<Vite
+                                          count={count}
+                                          setCount={setCount}
+                                          estado={estado}
+                                          setEstado={setEstado}
+                                      />}/>                                      
+            
+            <Route path="contacto" element={<Main/>}/>
+            <Route path="lista-articulo" element={<ListaProductos/>}/>
+            <Route path="detalle-articulo/:id" element={<DetalleArticulo/>}/>
+          </Route>
+        </Routes>  
+        {/* Rutas Protegidas */}
 
+              
+
+
+      </AuthProvider>      
     </BrowserRouter>    
   )
 }

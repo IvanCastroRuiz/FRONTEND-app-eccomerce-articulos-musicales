@@ -1,6 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState  } from 'react';
+import useAuth from '../hooks/useAuth';
 import Alerta from '../components/Alerta';
+import clienteAxios from '../config/axios';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
@@ -9,9 +11,11 @@ const Home = () => {
   const [ password, setPassword ] = useState('');
   const [ alerta, setAlerta ] = useState({});
 
+  const { setAuth } = useAuth();
+
   //const navigate = useNavigate();
 
-  const handleSudmit = e =>{
+  const handleSudmit = async (e) =>{
     e.preventDefault();
     
     if([email, password].includes('')){
@@ -21,21 +25,22 @@ const Home = () => {
 
     // Auntenticar al usuario
 
-    // try {
-    //   const { data } = await clienteAxios.post('/usuarios/login', {
-    //     email, 
-    //     password
-    //   });
-    //   localStorage.setItem('token', data.token);
-    //   //console.log(data);
-    //   setAuth(data);
-    //   navigate('/admin');
-    // } catch (error) {
-    //   setAlerta({
-    //     msg: error.response.data.msg,
-    //     error: true
-    //   });
-    // }
+     try {
+      const { data } = await clienteAxios.post('/usuarios/login', {
+        email, 
+        password
+      });
+      
+       localStorage.setItem('token', data.token);
+       console.log(data);
+       setAuth(data);
+       navigate('/admin');
+    } catch (error) {
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true
+      });
+    }
 
   }
 
