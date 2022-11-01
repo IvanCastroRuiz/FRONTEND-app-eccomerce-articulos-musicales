@@ -134,7 +134,6 @@ const Formulario = ({contactos,setContactos}) => {
                     msg && 
                         <Alerta
                             alerta={alerta}
-                            setAlerta={setAlerta}
                         />
                 }
                 <input 

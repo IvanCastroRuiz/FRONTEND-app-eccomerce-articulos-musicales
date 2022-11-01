@@ -41,7 +41,7 @@ const Registrar = () => {
       
       try {
         
-        const respuesta = await clienteAxios.post('/usuarios ', { nombre, email, password, telefono, direccion, web } );
+        await clienteAxios.post('/usuarios', { nombre, email, password, telefono, direccion, web } );
         setAlerta({
             msg: "Creado correctamente, revisa tu email", 
             error: false
@@ -74,7 +74,6 @@ const Registrar = () => {
 
             { msg &&  <Alerta 
                         alerta={alerta}
-                        setAlerta={setAlerta}
                       />
             }           
 

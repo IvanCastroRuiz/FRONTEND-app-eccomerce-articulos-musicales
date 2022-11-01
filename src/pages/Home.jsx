@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState  } from 'react';
 import Alerta from '../components/Alerta';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
 
@@ -9,7 +9,7 @@ const Home = () => {
   const [ password, setPassword ] = useState('');
   const [ alerta, setAlerta ] = useState({});
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleSudmit = e =>{
     e.preventDefault();
@@ -51,7 +51,6 @@ const Home = () => {
 
             { msg &&  <Alerta 
                         alerta={alerta}
-                        setAlerta={setAlerta}
                       />
             }             
 
@@ -66,7 +65,7 @@ const Home = () => {
                 </label>
                 <input 
                   type="email"
-                  placeholder="Email de registro"
+                  placeholder="Email de registro"                  
                   className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"
                   value={email}
                   onChange={ e => setEmail(e.target.value) }

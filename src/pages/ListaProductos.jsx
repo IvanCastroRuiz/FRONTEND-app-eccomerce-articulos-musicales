@@ -1,7 +1,6 @@
 import { useState, useEffect }  from 'react'
 
 import Spinner from '../components/Spinner';
-
 import Articulo from '../pages/Articulo';
 
 const ListaProductos = () => {
@@ -61,7 +60,7 @@ const ListaProductos = () => {
                                             </div>
                                           </div>
                                         :
-                                          <p>No hay productos</p>                  
+                                          <p>Cargando el listado de productos...</p>                  
               }
         </div>
     </>
