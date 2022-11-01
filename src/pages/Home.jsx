@@ -11,6 +11,7 @@ const Home = () => {
   const [ password, setPassword ] = useState('');
   const [ alerta, setAlerta ] = useState({});
   const { setAuth } = useAuth();
+
   const navigate = useNavigate();
 
   const handleSudmit = async (e) =>{
@@ -24,15 +25,18 @@ const Home = () => {
     // Auntenticar al usuario
 
      try {
+
       const { data } = await clienteAxios.post('/usuarios/login', {
         email, 
         password
       });
       
        localStorage.setItem('token', data.token);
-       console.log(data);
-       setAuth(data);
-       navigate('/admin');
+      //  console.log(data);
+
+      setAuth(data);
+      navigate('/admin');
+
     } catch (error) {
       setAlerta({
         msg: error.response.data.msg,

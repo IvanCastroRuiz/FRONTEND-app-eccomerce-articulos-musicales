@@ -1,10 +1,10 @@
 import { Outlet  } from 'react-router-dom';
 
 // Componentes
-import Header from '../components/Header';
-import Navegacion from '../components/Navegacion';
-import Footer from '../components/Footer';
-import Sidebar from '../components/Sidebar';
+import Header from '../components/rutasPublicas/Header';
+import Navegacion from '../components/rutasPublicas/Navegacion';
+import Footer from '../components/rutasPublicas/Footer';
+import Sidebar from '../components/rutasPublicas/Sidebar';
 
 const LayoutPublic = ({reactLogo}) => {
   return (

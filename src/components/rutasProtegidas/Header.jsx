@@ -39,7 +39,15 @@ const Header = () => {
                         usuario?._id 
                                 ? 
                                     <h4 className="text-white font-black text-sm uppercase">{usuario.email}</h4> 
-                                :    <h4 className="text-white font-black text-sm uppercase"></h4> 
+                                :   
+                                    <h4 className="text-white font-black text-sm uppercase"></h4> 
+                    }
+                    { 
+                        usuario?._id 
+                                ? 
+                                    <h4 className="text-white font-black text-sm uppercase">{usuario.rol}</h4> 
+                                :   
+                                    <h4 className="text-white font-black text-sm uppercase"></h4> 
                     }
                     
                 </div>

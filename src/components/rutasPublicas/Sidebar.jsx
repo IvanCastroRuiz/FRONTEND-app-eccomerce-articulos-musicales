@@ -1,7 +1,7 @@
-import sideBar from '../assets/img/side-bar.jpg';
-import sideBar2 from '../assets/img/side-bar2.jpg';
-import sideBar3 from '../assets/img/side-bar3.jpg';
-import sideBar4 from '../assets/img/side-bar4.jpg';
+import sideBar from '../../assets/img/side-bar.jpg';
+import sideBar2 from '../../assets/img/side-bar2.jpg';
+import sideBar3 from '../../assets/img/side-bar3.jpg';
+import sideBar4 from '../../assets/img/side-bar4.jpg';
 
 const Sidebar = () => {
   return (

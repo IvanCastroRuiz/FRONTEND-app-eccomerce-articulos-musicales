@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import AdminNav from "../components/rutasProtegidas/AdminNav";
-import useAuth from '../hooks/useAuth'
-import Alerta from "../components/Alerta";
+import AdminNav from "../../components/rutasProtegidas/AdminNav";
+import useAuth from '../../hooks/useAuth'
+import Alerta from "../../components/Alerta";
 
 const EditarPerfil = () => {
 

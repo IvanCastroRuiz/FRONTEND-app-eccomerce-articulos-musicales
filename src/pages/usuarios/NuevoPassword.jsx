@@ -1,8 +1,8 @@
 import {  useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import clienteAxios from '../config/axios';
-import Alerta from '../components/Alerta';
+import clienteAxios from '../../config/axios';
+import Alerta from '../../components/Alerta';
 
 
 const NuevoPassword = () => {

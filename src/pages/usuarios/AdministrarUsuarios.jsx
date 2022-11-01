@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Formulario from '../components/rutasProtegidas/Formulario';
-import ListadoPacientes from '../components/rutasProtegidas/ListadoUsuarios';
+import Formulario from '../../components/rutasProtegidas/Formulario';
+import ListadoPacientes from '../../components/rutasProtegidas/ListadoUsuarios';
 
 
 const AdministrarUsuarios = () => {

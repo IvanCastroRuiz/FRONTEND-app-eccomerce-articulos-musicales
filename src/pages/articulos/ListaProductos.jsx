@@ -1,7 +1,7 @@
 import { useState, useEffect }  from 'react'
 
-import Spinner from '../components/Spinner';
-import Articulo from '../pages/Articulo';
+import Spinner from '../../components/Spinner';
+import Articulo from './Articulo';
 
 const ListaProductos = () => {
 

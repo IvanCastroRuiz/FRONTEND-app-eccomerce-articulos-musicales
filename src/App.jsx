@@ -19,18 +19,19 @@ import Home from './pages/Home';
 import Vite from './pages/Vite';
 import Main from './pages/Main';
 
-// Login
-import Registrar from './pages/Registrar';
-import OlvidePassword from './pages/OlvidePassword';
-import ConfirmarCuenta from './pages/ConfirmarCuenta';
-import NuevoPassword from './pages/NuevoPassword';
-// Fin Login
+// usuarios
+import Registrar from './pages/usuarios/Registrar';
+import OlvidePassword from './pages/usuarios/OlvidePassword';
+import ConfirmarCuenta from './pages/usuarios/ConfirmarCuenta';
+import NuevoPassword from './pages/usuarios/NuevoPassword';
+import AdministrarUsuarios from './pages/usuarios/AdministrarUsuarios';
+import EditarPerfil from './pages/usuarios/EditarPerfil';
+import CambiarPassword from './pages/usuarios/CambiarPassword';
 
-import ListaProductos from './pages/ListaProductos';
-import DetalleArticulo from './pages/DetalleArticulo';
-import AdministrarUsuarios from './pages/AdministrarUsuarios';
-import EditarPerfil from './pages/EditarPerfil';
-import CambiarPassword from './pages/CambiarPassword';
+// Articulos
+import ListaProductos from './pages/articulos/ListaProductos';
+import DetalleArticulo from './pages/articulos/DetalleArticulo';
+
 
 // Styles
 //import './assets/css/App.css';

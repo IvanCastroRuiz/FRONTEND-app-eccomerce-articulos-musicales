@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import AdminNav from "../components/rutasProtegidas/AdminNav";
-import Alerta from "../components/Alerta";
-import useAuth from '../hooks/useAuth';
+import AdminNav from "../../components/rutasProtegidas/AdminNav";
+import Alerta from "../../components/Alerta";
+import useAuth from '../../hooks/useAuth';
 
 const CambiarPassword = () => {
 
