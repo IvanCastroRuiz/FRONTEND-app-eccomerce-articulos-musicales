@@ -1,7 +1,7 @@
 import {  useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-//import clienteAxios from '../config/axios';
+import clienteAxios from '../config/axios';
 import Alerta from '../components/Alerta';
 
 
@@ -21,7 +21,7 @@ const NuevoPassword = () => {
   useEffect(()=>{
     const comprobarToken = async () =>{
       try {
-        await clienteAxios(`/veterinarios/olvide-password/${token}`);
+        await clienteAxios(`/usuarios/olvide-password/${token}`);
         setAlerta({
           msg: "Coloca tu nuevo password",
         });
@@ -56,24 +56,24 @@ const NuevoPassword = () => {
     };
 
     // Modificar el password
-    // try {
+    try {
 
-    //   const url = `/veterinarios/olvide-password/${token}`;
+      const url = `/usuarios/olvide-password/${token}`;
 
-    //   const { data } = await clienteAxios.post(url, {
-    //     password
-    //   });
-    //   setAlerta({
-    //     msg: data.msg
-    //   }); 
-    //   setCambioConfirmado(false);
-    //   setPasswordModificado(true);
-    // } catch (error) {
-    //   setAlerta({
-    //     msg: error.response.data.msg,
-    //     error: true
-    //   });      
-    // }
+      const { data } = await clienteAxios.post(url, {
+        password
+      });
+      setAlerta({
+        msg: data.msg
+      }); 
+      setCambioConfirmado(false);
+      setPasswordModificado(true);
+    } catch (error) {
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true
+      });      
+    }
 
   };
 
@@ -88,7 +88,6 @@ const NuevoPassword = () => {
 
           { msg &&  <Alerta 
                         alerta={alerta}
-                        setAlerta={setAlerta}
                     />
           } 
 

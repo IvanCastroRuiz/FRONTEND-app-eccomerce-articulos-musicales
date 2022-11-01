@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Alerta from '../components/Alerta';
-//import clienteAxios from '../config/axios';
+import clienteAxios from '../config/axios';
 
 const OlvidePassword = () => {
 
@@ -12,13 +12,17 @@ const OlvidePassword = () => {
     e.preventDefault();
 
     if([email].includes('')){
-      setAlerta({msg: "El email es obligatorio", error: true});
+      setAlerta({
+                  msg: "El email es obligatorio", 
+                  error: true
+                }
+            );
       return;
     };
     // Consultamos la API 
     try {
 
-      const { data } = await clienteAxios.post('/veterinarios/olvide-password',{
+      const { data } = await clienteAxios.post('/usuarios/olvide-password',{
         email
       });
 
