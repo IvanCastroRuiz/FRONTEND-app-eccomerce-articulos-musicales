@@ -10,10 +10,8 @@ const Home = () => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ alerta, setAlerta ] = useState({});
-
   const { setAuth } = useAuth();
-
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSudmit = async (e) =>{
     e.preventDefault();

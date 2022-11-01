@@ -18,7 +18,7 @@ const Articulo = ({producto}) => {
             <div>
                 <h3 className="text-xl text-gray-900">
                 <Link 
-                    to={`/detalle-articulo/${_id}`}
+                    to={`/admin/detalle-articulo/${_id}`}
                 >
                     <span aria-hidden="true" className="absolute inset-0" />
                     {nombre}

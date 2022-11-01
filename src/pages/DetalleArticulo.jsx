@@ -49,7 +49,7 @@ const DetalleArticulo = () => {
                     <div className="p-6 align-bottom">
                         <Link
                             className="btn bg-cyan-600 text-center text-3xl text-slate-200 font-bold"
-                            to="/lista-articulo"
+                            to="/admin/lista-articulo"
                         >
                             Regresa a listado de articulos
                         </Link>

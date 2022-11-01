@@ -8,9 +8,11 @@ import { useState } from 'react';
 
 // Context
 import { AuthProvider } from './context/AuthProvider';
+import { UsuariosProvider } from './context/UsuariosProvider';
 
 // components Layout
 import LayoutPublic from './Layout/LayoutPublic';
+import RutaProtegida from './Layout/RutaProtegida';
 
 // pages
 import Home from './pages/Home';
@@ -26,10 +28,13 @@ import NuevoPassword from './pages/NuevoPassword';
 
 import ListaProductos from './pages/ListaProductos';
 import DetalleArticulo from './pages/DetalleArticulo';
+import AdministrarUsuarios from './pages/AdministrarUsuarios';
+import EditarPerfil from './pages/EditarPerfil';
+import CambiarPassword from './pages/CambiarPassword';
 
 // Styles
 //import './assets/css/App.css';
-// import './assets/css/index.css';
+//import './assets/css/index.css';
 import './assets/css/normalize.css';
 import './assets/css/styles.css';
 import reactLogo from './assets/react.svg';
@@ -44,34 +49,37 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        {/* Rutas Publicas */}
-        <Routes>
-          <Route exact path="/" element={<LayoutPublic
-                                          reactLogo={reactLogo}  
-                                        />}>
-            <Route path="/" element={<Home/>}/>
-            <Route path="registrar" element={<Registrar/>} />
-            <Route path="olvide-password" element={<OlvidePassword/>} />
-            <Route path="olvide-password/:token" element={<NuevoPassword/>} />
-            <Route path="confirmar/:token" element={<ConfirmarCuenta/>} />
-            
-            <Route path="vite" element={<Vite
-                                          count={count}
-                                          setCount={setCount}
-                                          estado={estado}
-                                          setEstado={setEstado}
-                                      />}/>                                      
-            
-            <Route path="contacto" element={<Main/>}/>
-            <Route path="lista-articulo" element={<ListaProductos/>}/>
-            <Route path="detalle-articulo/:id" element={<DetalleArticulo/>}/>
-          </Route>
-        </Routes>  
-        {/* Rutas Protegidas */}
+        <UsuariosProvider>
+          {/* Rutas Publicas */}
+          <Routes>
+            <Route exact path="/" element={<LayoutPublic
+                                            reactLogo={reactLogo}  
+                                          />}>
+              <Route path="/" element={<Home/>}/>
+              <Route path="registrar" element={<Registrar/>} />
+              <Route path="olvide-password" element={<OlvidePassword/>} />
+              <Route path="olvide-password/:token" element={<NuevoPassword/>} />
+              <Route path="confirmar/:token" element={<ConfirmarCuenta/>} />
+              <Route path="vite" element={<Vite
+                                            count={count}
+                                            setCount={setCount}
+                                            estado={estado}
+                                            setEstado={setEstado}
+                                        />}/>                                      
+              <Route path="contacto" element={<Main/>}/>
+            </Route>
 
-              
+            {/* Rutas Protegidas */}
+            <Route path="/admin" element={<RutaProtegida/>}>
+              <Route index element={<AdministrarUsuarios/>} />
+              <Route path="perfil" element={<EditarPerfil/>} />
+              <Route path="lista-articulo" element={<ListaProductos/>}/>
+              <Route path="detalle-articulo/:id" element={<DetalleArticulo/>}/>
+              <Route path="cambiar-password" element={<CambiarPassword/>} />
+            </Route> 
 
-
+          </Routes>  
+        </UsuariosProvider>
       </AuthProvider>      
     </BrowserRouter>    
   )

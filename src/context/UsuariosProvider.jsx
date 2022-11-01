@@ -1,15 +1,15 @@
 import { createContext, useState, useEffect } from 'react';
 import clienteAxios from '../config/axios';
 
-const PacientesContext = createContext();
+const UsuariosContext = createContext();
 
-const PacientesProvider = ({children}) =>{
+const UsuariosProvider = ({children}) =>{
 
-    const [ pacientes, setPacientes ] =  useState([]);
-    const [ paciente, setPaciente ] =  useState({});
+    const [ usuarios, setUsuarios ] =  useState([]);
+    const [ usuario, setUsuario ] =  useState({});
 
     useEffect(()=>{
-        const obtenerPacientes = async () =>{
+        const obtenerUsuarios = async () =>{
             try{
                 const token = localStorage.getItem('token');
                 if(!token) return;
@@ -20,17 +20,18 @@ const PacientesProvider = ({children}) =>{
                         Authorization: `Bearer ${token}`
                     }
                 };
-                const { data } = await clienteAxios('/pacientes', config);
-                setPacientes(data);
+                const { data } = await clienteAxios('/usuarios', config);
+                setUsuarios(data);
+                console.log(data);
             } catch (error){
                 console.log(error);
             }
         }
-        obtenerPacientes();
+        obtenerUsuarios();
     },[]);
 
-    const guardarPaciente = async (paciente) =>{
-        console.log(pacientes)
+    const guardarUsuario = async (usuario) =>{
+        console.log(usuarios)
         const token = localStorage.getItem('token');
         const config = {
             headers: {
@@ -39,34 +40,34 @@ const PacientesProvider = ({children}) =>{
             }
         }     
 
-       if(paciente.id) {
+       if(usuario.id) {
             try{
-                const { data } = await clienteAxios.put(`/pacientes/${paciente.id}`, paciente, config);
+                const { data } = await clienteAxios.put(`/usuarios/${usuario.id}`, usuario, config);
                 console.log(data);
-                const pacientesActualizados = pacientes.map( pacienteState => pacienteState._id === data._id ? data : pacienteState);
-                setPacientes(pacientesActualizados);
+                const usuariosActualizados = usuarios.map( usuarioState => usuarioState._id === data._id ? data : usuarioState);
+                setUsuarios(usuariosActualizados);
             } catch (error) {
                 console.log(error);
             }
        }else{
             try{
-                const { data } = await clienteAxios.post('/pacientes', paciente, config)
+                const { data } = await clienteAxios.post('/usuarios', usuario, config)
                 console.log(data)
-                //const { ...pacienteAlmacenado } = data
-                setPacientes([data, ...pacientes])
-                //console.log(pacienteAlmacenado)
-                console.log(pacientes)
+                //const { ...usuarioAlmacenado } = data
+                setUsuarios([data, ...usuarios])
+                //console.log(usuarioAlmacenado)
+                console.log(usuarios)
             } catch (error) {
                 console.log(error.response.data.msg);
             }
        }
     };
 
-    const setEdicion = (paciente) =>{
-        setPaciente(paciente);
+    const setEdicion = (usuario) =>{
+        setUsuario(usuario);
     };
 
-    const eliminarPaciente = async (id) =>{
+    const eliminarUsuario = async (id) =>{
         const confirmar = confirm('¿Confirmas que deseas eliminar?');
 
         if(confirmar){
@@ -80,10 +81,10 @@ const PacientesProvider = ({children}) =>{
                     }
                 } 
 
-                const { data } = await clienteAxios.delete(`/pacientes/${id}`, config);
+                const { data } = await clienteAxios.delete(`/usuarios/${id}`, config);
 
-                const pacientesActualizados = pacientes.filter( pacienteState => pacienteState._id !== id);
-                setPacientes(pacientesActualizados);
+                const usuariosActualizados = usuarios.filter( usuarioState => usuarioState._id !== id);
+                setUsuarios(usuariosActualizados);
 
             } catch (error){
                 console.log(error);
@@ -93,22 +94,22 @@ const PacientesProvider = ({children}) =>{
     
 
     return (
-        <PacientesContext.Provider
+        <UsuariosContext.Provider
             value={{
-                pacientes,
-                guardarPaciente,
+                usuarios,
+                guardarUsuario,
                 setEdicion,
-                paciente,
-                eliminarPaciente
+                usuario,
+                eliminarUsuario
             }}        
         >
             {children}
-        </PacientesContext.Provider>
+        </UsuariosContext.Provider>
     );
 }
 
 export {
-    PacientesProvider
+    UsuariosProvider
 }
 
-export default PacientesContext;
+export default UsuariosContext;

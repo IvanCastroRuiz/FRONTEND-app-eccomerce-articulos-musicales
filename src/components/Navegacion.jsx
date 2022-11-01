@@ -36,14 +36,15 @@ const Navegacion = () => {
           >
             Contactenos
           </NavLink>
-          <NavLink 
+          {/* Paso a ruta protegida */}
+          {/* <NavLink 
             to="lista-articulo"
             style={({ isActive }) =>
                 isActive ? activeStyle : undefined
               }
           >
             Lista Articulos
-          </NavLink>
+          </NavLink> */}
         </nav>
     </div>
   )
