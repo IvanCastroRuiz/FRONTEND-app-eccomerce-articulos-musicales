@@ -20,7 +20,7 @@ const ListadoUsuarios = () => {
                     {usuarios.map( usuario => (
                         <Usuario 
                             key={usuario._id}
-                            paciente={usuario}
+                            usuario={usuario}
                         />
                     ))}
                 </>

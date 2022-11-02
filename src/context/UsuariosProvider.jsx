@@ -20,9 +20,9 @@ const UsuariosProvider = ({children}) =>{
                         Authorization: `Bearer ${token}`
                     }
                 };
-                const { data } = await clienteAxios('/usuarios', config);
+                const { data } = await clienteAxios('/usuarios/lista-usuarios', config);
                 setUsuarios(data);
-                console.log(data);
+                // console.log(data);
             } catch (error){
                 console.log(error);
             }
@@ -31,7 +31,7 @@ const UsuariosProvider = ({children}) =>{
     },[]);
 
     const guardarUsuario = async (usuario) =>{
-        console.log(usuarios)
+        console.log(usuario)
         const token = localStorage.getItem('token');
         const config = {
             headers: {
@@ -47,16 +47,14 @@ const UsuariosProvider = ({children}) =>{
                 const usuariosActualizados = usuarios.map( usuarioState => usuarioState._id === data._id ? data : usuarioState);
                 setUsuarios(usuariosActualizados);
             } catch (error) {
-                console.log(error);
+                console.log(error.message);
             }
        }else{
             try{
                 const { data } = await clienteAxios.post('/usuarios', usuario, config)
                 console.log(data)
-                //const { ...usuarioAlmacenado } = data
-                setUsuarios([data, ...usuarios])
-                //console.log(usuarioAlmacenado)
-                console.log(usuarios)
+                const { createdAt, updatedAt, __v, ...usuarioAlmacenado } = data
+                setUsuarios([usuarioAlmacenado, ...usuarios]);
             } catch (error) {
                 console.log(error.response.data.msg);
             }

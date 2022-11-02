@@ -5,11 +5,14 @@ import useUsuarios from '../../hooks/useUsuarios';
 const Formulario = () => {
 
     const [ nombre, setNombre ] = useState('');
-    const [ propietario, setPropietario ] = useState('');
     const [ email, setEmail ] = useState('');
-    //const [ fecha, setFecha ] = useState(Date.now());
-    const [ fecha, setFecha ] = useState('');
-    const [ sintomas, setSintomas ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ telefono, setTelefono ] = useState('');
+    const [ direccion, setDireccion ] = useState('');
+    const [ web, setWeb ] = useState('');
+    const [ rol, setRol ] = useState('');
+    const [ token, setToken ] = useState('');
+    const [ confirmado, setConfirmado ] = useState('');
     const [ id, setId ] = useState(null);
 
     const [ alerta, setAlerta ] = useState({});
@@ -19,30 +22,40 @@ const Formulario = () => {
     useEffect(()=>{
       if(usuario?.nombre){
         setNombre(usuario.nombre);
-        setPropietario(usuario.propietario);
         setEmail(usuario.email);
-        setFecha(usuario.fecha);
-        setSintomas(usuario.sintomas);
+        setPassword(usuario.password);
+        setTelefono(usuario.telefono);
+        setDireccion(usuario.direccion);
+        setWeb(usuario.web);
+        setRol(!usuario.rol ? "User" : usuario.rol);
+        setToken(!usuario.token ? "Usuario Confirmado" : usuario.token);
+        setConfirmado(usuario.confirmado);
         setId(usuario._id);
       }
     }, [usuario])
     
     const handleSudmit = e =>{
       e.preventDefault();
-      if([nombre, propietario, email, fecha, sintomas].includes('')){
+      if([nombre, email, telefono, direccion, web, password ].includes('')){
         setAlerta({msg: "Todo los campos son obligatorios", error: true});
         return;
       };
       
-      guardarUsuario({nombre, propietario, email, fecha, sintomas, id});
+      guardarUsuario({nombre, email, telefono, direccion, web, id, password});
+
       setAlerta({
         msg: "Guardado Correctamente"
       });
+
       setNombre("");
-      setPropietario("");
       setEmail("");
-      setFecha("");
-      setSintomas("");
+      setPassword("");
+      setTelefono("");
+      setDireccion("");
+      setWeb("");
+      setRol("");
+      setToken("");
+      setConfirmado("");
       setId("");
 
       setTimeout(() => {
@@ -63,7 +76,7 @@ const Formulario = () => {
         </p>
         
 
-        {/* <form
+        <form
           className="bg-white py-10 px-5 mb-10 lg:mb-5 shadow-md rounded-md"
           onSubmit={handleSudmit}
         
@@ -73,13 +86,13 @@ const Formulario = () => {
               htmlFor="nombre"
               className="text-gray-700 uppercase font-bold"
             >
-              Nombre Mascota
+              Nombre Usuario
             </label>   
 
             <input
               id="nombre"
               type="text"
-              placeholder="Nombre de la Mascota"
+              placeholder="Nombre del Usuario"
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
               value={nombre}
               onChange={ e => setNombre(e.target.value) }
@@ -88,34 +101,16 @@ const Formulario = () => {
 
           <div className="mb-5">
             <label  
-              htmlFor="propietario"
-              className="text-gray-700 uppercase font-bold"
-            >
-              Nombre Propietario
-            </label>   
-
-            <input
-              id="propietario"
-              type="text"
-              placeholder="Nombre del propietario"
-              className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-              value={propietario}
-              onChange={ e => setPropietario(e.target.value) }
-            />              
-          </div>
-
-          <div className="mb-5">
-            <label  
               htmlFor="email"
               className="text-gray-700 uppercase font-bold"
             >
-              Email Propietario
+              Email Usuario
             </label>   
 
             <input
               id="email"
               type="text"
-              placeholder="Email del Propietario"
+              placeholder="Email del Usuario"
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
               value={email}
               onChange={ e => setEmail(e.target.value) }
@@ -124,45 +119,140 @@ const Formulario = () => {
 
           <div className="mb-5">
             <label  
-              htmlFor="fecha"
+              htmlFor="password"
               className="text-gray-700 uppercase font-bold"
             >
-              Fecha Alta
+              Password Usuario
             </label>   
 
             <input
-              id="fecha"
-              type="date"
+              id="password"
+              type="password"
+              placeholder="Password del Usuario"
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-              value={fecha}
-              onChange={ e => setFecha(e.target.value) }
+              value={password}
+              onChange={ e => setPassword(e.target.value) }
             />              
           </div>
 
           <div className="mb-5">
             <label  
-              htmlFor="sintomas"
+              htmlFor="telefono"
               className="text-gray-700 uppercase font-bold"
             >
-              Sintomas
+              Telefono Usuario
             </label>   
 
-            <textarea
-              id="sintomas"
-              placeholder="Describe los sintomas"
+            <input
+              id="teelefono"
+              type="text"
+              placeholder="Telefono del Usuario"
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-              value={sintomas}
-              onChange={ e => setSintomas(e.target.value) }
+              value={telefono}
+              onChange={ e => setTelefono(e.target.value) }
+            />              
+          </div>
+
+          <div className="mb-5">
+            <label  
+              htmlFor="direccion"
+              className="text-gray-700 uppercase font-bold"
+            >
+              Direccion Usuario
+            </label>   
+
+            <input
+              id="direccion"
+              type="text"
+              placeholder="Telefono del Usuario"
+              className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+              value={direccion}
+              onChange={ e => setDireccion(e.target.value) }
+            />              
+          </div>
+
+          <div className="mb-5">
+            <label  
+              htmlFor="web"
+              className="text-gray-700 uppercase font-bold"
+            >
+              Web Usuario
+            </label>   
+
+            <input
+              id="web"
+              type="text"
+              placeholder="Web del Usuario"
+              className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+              value={web}
+              onChange={ e => setWeb(e.target.value) }
+            />              
+          </div>
+
+          <div className="mb-5">
+            <label  
+              htmlFor="rol"
+              className="text-gray-700 uppercase font-bold"
+            >
+              Rol Usuario
+            </label>   
+
+            <input
+              id="web"
+              type="text"
+              placeholder="Rol del Usuario"
+              className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+              disabled="on"
+              value={rol}
+              onChange={ e => setRol(e.target.value) }
+            />              
+          </div>
+
+          <div className="mb-5">
+            <label  
+              htmlFor="token"
+              className="text-gray-700 uppercase font-bold"
+            >
+              Token Usuario
+            </label>   
+
+            <input
+              id="web"
+              type="text"
+              placeholder="Token del Usuario"
+              className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+              value={token}
+              disabled="on"
+              onChange={ e => setToken(e.target.value) }
+            />              
+          </div>
+
+          <div className="mb-5">
+            <label  
+              htmlFor="confirmado"
+              className="text-gray-700 uppercase font-bold"
+            >
+              Usuario Confirmado
+            </label>   
+
+            <input
+              id="confirmado"
+              type="text"
+              placeholder="Usuario Confirmado"
+              className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+              value={confirmado}
+              disabled="on"
+              onChange={ e => setConfirmado(e.target.value) }
             />              
           </div>
 
           <input
             type="submit"
             className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
-            value={ id ? "Guardar Cambios"  : "Agregar Paciente" }
+            value={ id ? "Guardar Cambios"  : "Agregar Usuario" }
           />
           
-        </form>  */}
+        </form> 
 
         { msg &&  <Alerta 
                     alerta={alerta}

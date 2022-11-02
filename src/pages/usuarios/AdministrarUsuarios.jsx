@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Formulario from '../../components/rutasProtegidas/Formulario';
-import ListadoPacientes from '../../components/rutasProtegidas/ListadoUsuarios';
+import ListadoUsuarios from '../../components/rutasProtegidas/ListadoUsuarios';
 
 
 const AdministrarUsuarios = () => {
@@ -21,7 +21,7 @@ const AdministrarUsuarios = () => {
         </div>
 
         <div className="md:w-1/2 lg:w-3/5">
-          <ListadoPacientes />
+          <ListadoUsuarios />
         </div>
     </div>
   )
