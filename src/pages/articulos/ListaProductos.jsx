@@ -12,8 +12,9 @@ const ListaProductos = () => {
   useEffect( () =>{
     const consultarApi = async () =>{
       try {
-  
-          let respuesta =  await fetch("https://whispering-wildwood-03076.herokuapp.com/guitarras");
+
+          //import.meta.env.VITE_BACKEND_URL
+          let respuesta =  await fetch(`${import.meta.env.VITE_BACKEND_URL_STRAPI}/articulos`);
           //let respuesta =  await fetch("http://localhost:3000/articulos");
           //let respuesta =  await fetch("../src/assets/articulos.json");
           const resultado = await respuesta.json();

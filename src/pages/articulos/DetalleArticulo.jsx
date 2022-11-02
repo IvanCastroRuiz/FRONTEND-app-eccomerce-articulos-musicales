@@ -12,7 +12,7 @@ const DetalleArticulo = () => {
     const consultarApi = async () =>{
       try {
   
-          let respuesta =  await fetch(`https://whispering-wildwood-03076.herokuapp.com/guitarras/${id}`);
+          let respuesta =  await fetch(`${import.meta.env.VITE_BACKEND_URL_STRAPI}/articulos/${id}`);
           //let respuesta =  await fetch("http://localhost:3000/articulos");
           //let respuesta =  await fetch("../src/assets/articulos.json");
           const resultado = await respuesta.json();
@@ -25,7 +25,7 @@ const DetalleArticulo = () => {
     consultarApi();
   }, []);   
 
-  const { _id, nombre, descripcion, precio, imagen} = articulo
+  const { _id, nombre, descripcion, precio, imagen, tipo} = articulo
 
   return (
     <>
@@ -43,6 +43,7 @@ const DetalleArticulo = () => {
                                 />
                         </div>
                         <p className="mt-4 text-6xl text-center text-gray-900">$ {precio}</p>
+                        <p className="mt-4 text-xxl text-justify text-gray-900"> <strong>Categoria:</strong> {" "} {tipo}</p>
                         <p className="mt-4 text-xxl text-justify text-gray-900"> {descripcion}</p>
                     </div>
 

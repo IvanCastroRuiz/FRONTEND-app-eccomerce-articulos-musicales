@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Articulo = ({producto}) => {
 
-  const { _id, nombre, descripcion, precio, imagen  } = producto;
+  const { _id, nombre, precio, imagen  } = producto;
 
   return (
     <div key={producto._id} className="group relative">
