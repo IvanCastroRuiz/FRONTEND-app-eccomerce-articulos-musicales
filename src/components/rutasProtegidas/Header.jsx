@@ -13,6 +13,11 @@ const Header = () => {
 
     const { auth, cerrarSesion } = useAuth();
     const { usuario } = auth;
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        window.open('https://strapi-app-eccomerce-articulos.herokuapp.com/admin');
+    };
    
     return (
         <header className="bg-cyan-600 font-bold mx-auto md:grid md:grid-cols-1"> 
@@ -27,29 +32,15 @@ const Header = () => {
                         ECA - Administrador de Articulos {" "}
                         <span className="text-white font-black" >Musicales</span> 
                     </h1>
- 
+                    <div>
                     { 
                         usuario?._id 
                                 ? 
-                                    <h4 className="text-white font-black text-sm uppercase">{usuario.nombre}</h4> 
-                                : 
+                                    <h4 className="text-white font-black text-sm uppercase">{usuario.nombre} - {usuario.email} - {usuario.rol}</h4> 
+                                :   
                                     <h4 className="text-white font-black text-sm uppercase">No</h4> 
-                        }
-                    { 
-                        usuario?._id 
-                                ? 
-                                    <h4 className="text-white font-black text-sm uppercase">{usuario.email}</h4> 
-                                :   
-                                    <h4 className="text-white font-black text-sm uppercase"></h4> 
                     }
-                    { 
-                        usuario?._id 
-                                ? 
-                                    <h4 className="text-white font-black text-sm uppercase">{usuario.rol}</h4> 
-                                :   
-                                    <h4 className="text-white font-black text-sm uppercase"></h4> 
-                    }
-                    
+                    </div>
                 </div>
                 <div className="flex justify-between p-2">
                     <nav className="flex flex-col lg:flex-row gap-4 mt-5 lg:mt-0  items-center alings-center">
@@ -83,6 +74,27 @@ const Header = () => {
                             }
                         >
                             Lista Articulos
+                        </NavLink>
+
+                        <NavLink 
+                            to="lista-articulo"
+                            className="text-white text-sm uppercase font-bold"
+                            style={({ isActive }) =>
+                                isActive ? activeStyle : undefined
+                            }
+                        >
+                            Gestion ventas
+                        </NavLink>
+
+                        <NavLink 
+                            to="https://strapi-app-eccomerce-articulos.herokuapp.com/admin" 
+                            className="text-white text-sm uppercase font-bold"
+                            style={({ isActive }) =>
+                                isActive ? activeStyle : undefined
+                            }
+                            onClick={handleClick}
+                        >
+                           Administrar Contenido
                         </NavLink>
                     
                         <NavLink 

@@ -8,10 +8,10 @@ const EditarPerfil = () => {
 
     const { auth, actualizarPerfil } = useAuth()
     const [ perfil, setPerfil] = useState({})
-    const [alerta, setAlerta] = useState({})
+    const [ alerta, setAlerta] = useState({})
 
     useEffect( () => {
-        setPerfil(auth)
+        setPerfil(auth.usuario)
     }, [auth])
 
     const handleSubmit = async e => {
@@ -28,7 +28,7 @@ const EditarPerfil = () => {
         const resultado = await actualizarPerfil(perfil)
         setAlerta(resultado)
     }
-
+    
     const { msg } = alerta
 
     
@@ -45,6 +45,7 @@ const EditarPerfil = () => {
                 <div className="w-full md:w-1/2 bg-white shadow rounded-lg p-5">
 
                     {msg && <Alerta alerta={alerta} />}
+
                     <form
                         onSubmit={handleSubmit}
                     >  

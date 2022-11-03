@@ -52,7 +52,7 @@ const Home = () => {
 
     <>
           <div>
-            <h1 className="text-cyan-600 font-black text-6xl">Inicia Sesion y Disfruta de Nuestros {" "}<span className="text-black">Articulos</span></h1>
+            <h1 className="text-cyan-600 font-black text-6xl">Inicia Sesion y Disfruta de Nuestros {" "}<span className="text-black">Articulos Musicales</span></h1>
           </div>
           <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
 
