@@ -198,7 +198,7 @@ const Formulario = () => {
             </label>   
 
             <input
-              id="web"
+              id="rol"
               type="text"
               placeholder="Rol del Usuario"
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
@@ -217,7 +217,7 @@ const Formulario = () => {
             </label>   
 
             <input
-              id="web"
+              id="token"
               type="text"
               placeholder="Token del Usuario"
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
