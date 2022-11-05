@@ -7,7 +7,9 @@ import Footer from '../components/rutasProtegidas/Footer';
 
 const RutaProtegida = () => {
   const { auth, cargando } = useAuth();
-  const { usuario } = auth;
+  
+  // console.log(auth.usuario)
+
   if(cargando) return 'cargando...'
 
   return (
@@ -15,11 +17,13 @@ const RutaProtegida = () => {
       <Header/>
       <Sidebar />
 
-      {usuario?._id ? (
-          <main className='container mx-auto mt-10'>
-              <Outlet /> 
-          </main>
-      ): <Navigate to="/" /> }
+      {
+          auth.usuario?._id || auth?.token  ? (
+            <main className='container mx-auto mt-10'>
+                <Outlet /> 
+            </main>
+          ): <Navigate to="/" />  
+      }
 
       <Footer/>
     </>

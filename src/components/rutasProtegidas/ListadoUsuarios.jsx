@@ -1,9 +1,33 @@
-import useUsuarios from '../../hooks/useUsuarios';
+import { useEffect, useState } from 'react';
+// import useUsuarios from '../../hooks/useUsuarios';
 import Usuario from './Usuario';
+import clienteAxios from '../../config/axios';
 
 const ListadoUsuarios = () => {
 
-    const { usuarios } = useUsuarios();
+    const [usuarios, setUsuarios ] = useState([]);
+
+    useEffect(()=>{
+        const obtenerUsuarios = async () =>{
+            try{
+                const token = localStorage.getItem('token');
+                if(!token) return;
+
+                const config = {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
+                };
+                const { data } = await clienteAxios('/usuarios/lista-usuarios', config);
+                setUsuarios(data);
+                // console.log(data);
+            } catch (error){
+                console.log(error);
+            }
+        }
+        obtenerUsuarios();
+    },[]);
 
     return (
         <>

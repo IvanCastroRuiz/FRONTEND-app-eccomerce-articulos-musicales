@@ -13,6 +13,7 @@ const Header = () => {
 
     const { auth, cerrarSesion } = useAuth();
     const { usuario } = auth;
+    console.log(auth);
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -35,10 +36,10 @@ const Header = () => {
                     <div>
                     { 
                         usuario?._id 
-                                ? 
-                                    <h4 className="text-white font-black text-sm uppercase">{usuario.nombre} - {usuario.email} - {usuario.rol}</h4> 
-                                :   
-                                    <h4 className="text-white font-black text-sm uppercase">No</h4> 
+                                    ? 
+                                        <h4 className="text-white font-black text-sm uppercase">{usuario.nombre} - {usuario.email} - {usuario.rol}</h4> 
+                                    :   
+                                        <h4 className="text-white font-black text-sm uppercase">No</h4> 
                     }
                     </div>
                 </div>
