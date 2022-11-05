@@ -33,7 +33,7 @@ const Home = () => {
       
        localStorage.setItem('token', data.token);
       //  console.log(data);
-
+      // Validar la redireccion
       setAuth(data);
       navigate('/admin');
 
