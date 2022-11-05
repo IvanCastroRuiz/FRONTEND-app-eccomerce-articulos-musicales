@@ -26,7 +26,7 @@ const Home = () => {
 
      try {
 
-      const { data } = await clienteAxios.post('/usuarios/login', {
+      const { data } = await clienteAxios.post('usuarios/login', {
         email, 
         password
       });
